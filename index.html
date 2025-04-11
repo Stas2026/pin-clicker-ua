@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Pin Clicker UA | Реліз 15.05.2025!</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            width: 100vw;
+            overflow: auto;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(0deg, #0057B8 50%, #FFD700 50%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+        .game-title {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        .coming-soon {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+        .countdown {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 20px 0;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 10px;
+            min-width: 300px;
+        }
+        .countdown span {
+            display: inline-block;
+            min-width: 60px;
+        }
+        .release-info {
+            font-size: 1.2rem;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-title">PIN CLICKER UA</div>
+    <div class="coming-soon">Глобальний реліз вже через</div>
+    
+    <div class="countdown" id="countdown">
+        <div><span id="days">00</span> днів</div>
+        <div><span id="hours">00</span> годин</div>
+        <div><span id="minutes">00</span> хвилин</div>
+        <div><span id="seconds">00</span> секунд</div>
+    </div>
+    
+    <div class="release-info">
+        15 травня 2025, 13:00 (Київський час)
+    </div>
+
+    <script>
+        // Дата релізу: 15 травня 2025, 13:00 (Київський час)
+        const RELEASE_DATE = new Date('2025-05-15T13:00:00+03:00').getTime();
+        
+        // Елементи таймера
+        const daysEl = document.getElementById('days');
+        const hoursEl = document.getElementById('hours');
+        const minutesEl = document.getElementById('minutes');
+        const secondsEl = document.getElementById('seconds');
+
+        // Функція оновлення таймера
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const diff = RELEASE_DATE - now;
+
+            // Розрахунок часу
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            // Оновлення відображення
+            daysEl.textContent = days.toString().padStart(2, '0');
+            hoursEl.textContent = hours.toString().padStart(2, '0');
+            minutesEl.textContent = minutes.toString().padStart(2, '0');
+            secondsEl.textContent = seconds.toString().padStart(2, '0');
+
+            // Якщо реліз вже настав
+            if (diff < 0) {
+                document.getElementById('countdown').innerHTML = "Гра вийшла! 🎉";
+                clearInterval(timerInterval);
+            }
+        }
+
+        // Перше оновлення
+        updateCountdown();
+        // Оновлюємо кожну секунду
+        const timerInterval = setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
