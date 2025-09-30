@@ -3,337 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pin Brawl Stars</title>
+    <title>pin brawl stars</title>
     <style>
-        * {
+        body {
+            font-family: 'Times New Roman', serif;
+            background-color: #f5f5f5;
+            color: #333;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-        }
-
-        body {
-            background-color: #1e90ff; /* блакитний фон */
+            display: flex;
+            justify-content: center;
+            align-items: center;
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-            color: white;
-        }
-
-        .screen {
-            display: none;
-            width: 100%;
-            max-width: 500px;
             text-align: center;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
         }
 
-        .active {
-            display: flex;
+        .container {
+            max-width: 600px;
+            padding: 40px;
+            background-color: white;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
 
-        .header {
+        h1 {
+            font-size: 2.5em;
             margin-bottom: 20px;
+            color: #8B4513;
         }
 
-        .game-image {
-            width: 200px;
-            height: 200px;
-            cursor: pointer;
-            border-radius: 15px;
-            transition: transform 0.3s;
+        p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-bottom: 30px;
         }
 
-        .game-image:hover {
-            transform: scale(1.05);
-        }
-
-        .money-display {
-            font-size: 24px;
-            font-weight: bold;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 10px 20px;
-            border-radius: 10px;
-            margin: 10px 0;
-        }
-
-        .navigation {
-            position: fixed;
-            bottom: 20px;
-            display: flex;
-            gap: 10px;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 15px;
-            border-radius: 25px;
-        }
-
-        .nav-btn {
-            padding: 12px 24px;
-            background: #1e90ff;
-            color: white;
-            border: none;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background 0.3s;
-        }
-
-        .nav-btn:hover {
-            background: #0077e6;
-        }
-
-        .shop-items, .events-list {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            width: 100%;
-        }
-
-        .shop-item, .event-item {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 15px;
-            border-radius: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .buy-btn {
-            padding: 8px 16px;
-            background: #ff6b6b;
-            color: white;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-        }
-
-        .donate-section {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 20px;
-            border-radius: 15px;
+        .decoration {
+            font-size: 3em;
             margin: 20px 0;
-            width: 100%;
+            color: #8B4513;
         }
 
-        .donate-btn {
-            padding: 12px 30px;
-            background: #ffd700;
-            color: black;
-            border: none;
-            border-radius: 10px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 10px;
-            transition: background 0.3s;
-        }
-
-        .donate-btn:hover {
-            background: #ffed4e;
-        }
-
-        .about-content {
-            text-align: left;
-            width: 100%;
-            max-width: 400px;
-        }
-
-        .section {
-            margin-bottom: 25px;
+        .signature {
+            margin-top: 40px;
+            font-style: italic;
+            color: #666;
         }
     </style>
 </head>
 <body>
-    <!-- Основний екран гри -->
-    <div id="main-screen" class="screen active">
-        <div class="header">
-            <div class="money-display">
-                Баланс: <span id="money">0</span> ₴
-            </div>
-        </div>
-
-        <img src="pinclassic.png" alt="Pin Classic" class="game-image" id="click-image">
+    <div class="container">
+        <div class="decoration">⚒️</div>
+        <h1>Технічні роботи</h1>
+        <p>На жаль, зараз на сайті ведуться технічні роботи.<br>
+        Ми докладаємо всіх зусиль, щоб швидко повернутися до вас.</p>
+        <p>Будь ласка, завітайте трохи пізніше.</p>
+        <div class="decoration">⏳</div>
+        <p class="signature">З повагою, команда сайту</p>
     </div>
-
-    <!-- Магазин -->
-    <div id="shop-screen" class="screen">
-        <div class="header">
-            <h1>Магазин</h1>
-            <div class="money-display">
-                Баланс: <span id="shop-money">0</span> ₴
-            </div>
-        </div>
-
-        <div class="shop-items">
-            <div class="shop-item">
-                <span>Мега пін (x10)</span>
-                <button class="buy-btn" onclick="buyItem(10, 100)">100 ₴</button>
-            </div>
-            <div class="shop-item">
-                <span>Епічний пін (x5)</span>
-                <button class="buy-btn" onclick="buyItem(5, 200)">200 ₴</button>
-            </div>
-            <div class="shop-item">
-                <span>Легендарний пін (x1)</span>
-                <button class="buy-btn" onclick="buyItem(1, 500)">500 ₴</button>
-            </div>
-            <div class="shop-item">
-                <span>Набір початківця</span>
-                <button class="buy-btn" onclick="buyItem(25, 300)">300 ₴</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Про гру -->
-    <div id="about-screen" class="screen">
-        <div class="header">
-            <h1>Про гру</h1>
-        </div>
-
-        <div class="about-content">
-            <div class="section">
-                <h3>Що таке Pin Brawl Stars?</h3>
-                <p>Pin Brawl Stars - це захоплююча гра де ти можеш збирати піни, покращувати свої навички та змагатися з іншими гравцями!</p>
-            </div>
-            
-            <div class="section">
-                <h3>Статистика</h3>
-                <p>Загальний дохід: <span id="total-earned">0</span> ₴</p>
-                <p>Кількість кліків: <span id="click-count">0</span></p>
-                <p>Поточна сила кліку: <span id="click-value">1</span> ₴</p>
-            </div>
-
-            <div class="donate-section">
-                <h3>Підтримати гру</h3>
-                <p>Ваша підтримка допоможе в розвитку гри!</p>
-                <p><strong>За донати ви отримаєте:</strong></p>
-                <p>🎯 x2 грн на 24 години</p>
-                <button class="donate-btn" onclick="openDonate()">Задонатити через PrivatPay</button>
-            </div>
-
-            <div class="section">
-                <h3>Зв'язок з розробником</h3>
-                <p>Маєте ідеї чи пропозиції? Пишіть нам на email: support@pinbrawlstars.com</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Події -->
-    <div id="events-screen" class="screen">
-        <div class="header">
-            <h1>Події</h1>
-        </div>
-
-        <div class="events-list">
-            <div class="event-item">
-                <div>
-                    <strong>Подвійні монети</strong>
-                    <p>Активна! Отримуй вдвічі більше монет за кліки</p>
-                </div>
-                <span>🎯 Активно</span>
-            </div>
-            
-            <div class="event-item">
-                <div>
-                    <strong>Тиждень пінів</strong>
-                    <p>Збирай унікальні піни щодня</p>
-                </div>
-                <span>⏳ Скоро</span>
-            </div>
-            
-            <div class="event-item">
-                <div>
-                    <strong>Турнір</strong>
-                    <p>Змагайся з іншими гравцями</p>
-                </div>
-                <span>🏆 Завершено</span>
-            </div>
-        </div>
-    </div>
-
-    <!-- Навігація -->
-    <div class="navigation">
-        <button class="nav-btn" onclick="showScreen('shop-screen')">Магазин</button>
-        <button class="nav-btn" onclick="showScreen('main-screen')">Головна</button>
-        <button class="nav-btn" onclick="showScreen('about-screen')">Про гру</button>
-        <button class="nav-btn" onclick="showScreen('events-screen')">Події</button>
-    </div>
-
-    <script>
-        // Змінні гри
-        let money = 0;
-        let totalEarned = 0;
-        let clickCount = 0;
-        let clickValue = 1;
-
-        // Елементи DOM
-        const moneyElement = document.getElementById('money');
-        const shopMoneyElement = document.getElementById('shop-money');
-        const totalEarnedElement = document.getElementById('total-earned');
-        const clickCountElement = document.getElementById('click-count');
-        const clickValueElement = document.getElementById('click-value');
-        const clickImage = document.getElementById('click-image');
-
-        // Обробник кліку на картинку
-        clickImage.addEventListener('click', function() {
-            money += clickValue;
-            totalEarned += clickValue;
-            clickCount++;
-            updateDisplay();
-            
-            // Анімація кліку
-            this.style.transform = 'scale(0.95)';
-            setTimeout(() => {
-                this.style.transform = 'scale(1)';
-            }, 100);
-        });
-
-        // Оновлення відображення
-        function updateDisplay() {
-            moneyElement.textContent = money;
-            shopMoneyElement.textContent = money;
-            totalEarnedElement.textContent = totalEarned;
-            clickCountElement.textContent = clickCount;
-            clickValueElement.textContent = clickValue;
-        }
-
-        // Перемикання екранів
-        function showScreen(screenId) {
-            // Приховуємо всі екрани
-            const screens = document.querySelectorAll('.screen');
-            screens.forEach(screen => {
-                screen.classList.remove('active');
-            });
-            
-            // Показуємо вибраний екран
-            document.getElementById(screenId).classList.add('active');
-        }
-
-        // Покупка в магазині
-        function buyItem(itemAmount, cost) {
-            if (money >= cost) {
-                money -= cost;
-                clickValue += itemAmount;
-                updateDisplay();
-                alert(`Ви успішно купили предмет! Тепер за клік ви отримуєте ${clickValue} ₴`);
-            } else {
-                alert('Недостатньо коштів!');
-            }
-        }
-
-        // Відкриття донату
-        function openDonate() {
-            // Тут буде посилання на PrivatPay
-            const donateUrl = "https://www.privat24.ua/send/3j9jk"; // Заміни на своє посилання
-            window.open(donateUrl, '_blank');
-            alert('Дякуємо за підтримку! Ви будете перенаправлені на сторінку донату.');
-        }
-
-        // Ініціалізація
-        updateDisplay();
-    </script>
 </body>
 </html>
