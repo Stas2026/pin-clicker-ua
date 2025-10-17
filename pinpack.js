@@ -2,28 +2,28 @@ const pinpackRewards = [
     {
         name: "Звичайний пін",
         value: 5,
-        img: "img/pin.png",
+        img: "pin.png",
         rarity: "common",
         id: "pin0"  // Розблоковує Common Pin в колекції
     },
     {
         name: "Рідкісний пін",
         value: 10,
-        img: "img/pin1.png",
+        img: "pin1.png",
         rarity: "rare",
         id: "pin1"  // Розблоковує Pin #1 в колекції
     },
     {
         name: "Епічний пін",
         value: 20,
-        img: "img/pin2.png",
+        img: "pin2.png",
         rarity: "epic",
         id: "pin2"  // Розблоковує Pin #2 в колекції
     },
     {
         name: "Легендарний пін",
         value: 50,
-        img: "img/pin3.png",
+        img: "pin3.png",
         rarity: "legendary",
         id: "pin3"  // Розблоковує Pin #3 в колекції
     }
